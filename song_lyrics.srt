@@ -1,0 +1,12 @@
+1
+0:00:00 --> 0:00:05
+This is the first line of the song.
+
+2
+0:00:05 --> 0:00:10
+Here comes the second line.
+
+3
+0:00:10 --> 0:00:15
+And this is the third line.
+

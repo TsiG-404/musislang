@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d502fe47dac80d0753fd7388cbfec88b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+    <div class="button-container">
+<form action="/translate" method="POST">
+<button type="submit">Translation</button>
+</form>
+<form action="/paraphrased" method="POST">
+<button type="submit">grammar</button>
+</form>
+<form action="/lyrics3" method="POST">
+<button type="submit">lyrics</button>
+</form>
+<form action="http://127.0.0.1:5002" method="GET">
+<button type="submit">Karaoke</button>
+</form>
+</div>
+    <div>
+        <h2>Artist Information</h2>
+        <p>Abel Makkonen Tesfaye(Amharic:አቤል መኮንን ተስፋዬ; born February 16, 1990), known professionally asthe Weeknd, is a Canadian singer-songwriter and actor.[2][3]He is known for his unconventional musical production, artistic reinventions and use of thefalsettoregister.<br><strong>Born:</strong> Abel Makkonen Tesfaye (1990-02-16) February 16, 1990 (age 34)Toronto, Ontario, Canada<br><strong>Genres:</strong> Pop
+alternative R&B
+R&B
+new wave
+dance<br><strong>Instruments:</strong> Vocals
+keyboards</p>
+    </div>
+    
+    
+    
+            <div class="folium-map" id="map_d502fe47dac80d0753fd7388cbfec88b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d502fe47dac80d0753fd7388cbfec88b = L.map(
+                "map_d502fe47dac80d0753fd7388cbfec88b",
+                {
+                    center: [61.0666922, -107.991707],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 3,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_aab0d007c6eabed7e69f3b275d977753 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_aab0d007c6eabed7e69f3b275d977753.addTo(map_d502fe47dac80d0753fd7388cbfec88b);
+        
+    
+            var marker_4d2d285efb81db3bdce42db129dd3f69 = L.marker(
+                [61.0666922, -107.991707],
+                {}
+            ).addTo(map_d502fe47dac80d0753fd7388cbfec88b);
+        
+    
+        var popup_ce3cc905724163beb1c0c3b265110434 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_07ffab27def96c0a387e3fb21dd2a2fb = $(`<div id="html_07ffab27def96c0a387e3fb21dd2a2fb" style="width: 100.0%; height: 100.0%;">Canada</div>`)[0];
+                popup_ce3cc905724163beb1c0c3b265110434.setContent(html_07ffab27def96c0a387e3fb21dd2a2fb);
+            
+        
+
+        marker_4d2d285efb81db3bdce42db129dd3f69.bindPopup(popup_ce3cc905724163beb1c0c3b265110434)
+        ;
+
+        
+    
+</script>
+</html>

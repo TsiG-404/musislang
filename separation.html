@@ -1,0 +1,44 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Separation Results</title>
+        
+            <link rel="stylesheet" href="css/separation.css">
+    
+    
+    </head>
+    <body>
+        <h1>Separated Audio</h1>
+        
+        <h2>Vocals</h2>
+        
+        <div id="m">
+        <audio controls>
+            <source src="static/vocal.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <h2>Instruments</h2>
+        <audio controls>
+            <source src="static/beat.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        </div>
+        <div class="button-container">
+<form action="/paraphrased" method="POST">
+<button type="submit">grammar</button>
+</form>
+<form action="/map" method="POST">
+<button type="submit">Origin</button>
+</form>
+<form action="/lyrics3" method="POST">
+<button type="submit">lyrics</button>
+</form>
+<form action="http://127.0.0.1:5002" method="GET">
+<button type="submit">Karaoke</button>
+</form>
+</div>
+
+    </body>
+    </html>
+    

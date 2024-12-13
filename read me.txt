@@ -1,0 +1,42 @@
+#thelei gia python
+
+3.9
+
+pip install flask
+pip install flask yt-dlp spleeter pydub
+pip install spleeter
+pip install --upgrade pip setuptools wheel
+pip install pygame
+
+install anacoda
+
+
+
+#thelei na trexeis to py
+
+python app.py
+
+ py -3.9 --version
+
+
+#test gia to backend
+
+curl -X POST -F "file=@song.mp3" http://localhost:5000/upload
+curl -X POST -F "file=@C:\Users\tsigg\Desktop\ptixiakesPolitis\site\song.mp3" http://127.0.0.1:5000/upload -o instrumental.wav
+
+
+
+#to kato gia yt
+
+curl -X POST -H "Content-Type: application/json" -d '{"url": "youtube_video_url"}' http://localhost:5000/youtube
+
+
+#gia to cmd ston fakelo
+
+shift + dexi klik 
+
+
+
+
+
+spleeter separate "C:\Users\tsigg\Desktop\ptixiakesPolitis\site\song.mp3" -o "C:\Users\tsigg\Desktop\ptixiakesPolitis\site\out"

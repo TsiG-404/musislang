@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Song Lyrics</title>
+<link href="css/lyrics.css" rel="stylesheet"/>
+<style>
+    body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    color: #333;
+    margin: 0;
+    padding: 0px;
+
+    
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #444;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+#aa{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#lyrics-container {
+    width:45vw;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 500px;
+}
+
+#lyrics-container p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+#translate {
+    width:45vw;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 500px;
+}
+
+#translate p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+button {
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #555;
+}
+
+button:active {
+    background: #222;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup textarea {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.popup .close-button {
+    text-align: right;
+}
+
+.popup .close-button button {
+    background: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.popup .close-button button:hover {
+    background: #c9302c;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+#translate {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+#translate:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+
+    
+    
+
+
+
+
+</style>
+<script>
+    function openPopup(id) {
+        document.getElementById('popup-overlay').style.display = 'block';
+        document.getElementById(id).style.display = 'block';
+    }
+
+    function closePopup(id) {
+        document.getElementById('popup-overlay').style.display = 'none';
+        document.getElementById(id).style.display = 'none';
+    }
+
+    function addPopup() {
+        const container = document.createElement('div');
+        const uniqueId = 'popup-' + Date.now();
+
+        container.className = 'popup';
+        container.id = uniqueId;
+        container.innerHTML = `
+            <h3>Grammar:</h3>
+            <textarea placeholder="enter correctlly grammar"></textarea>
+            <div class="close-button">
+                <button onclick="closePopup('${uniqueId}')">Close</button>
+            </div>
+        `;
+
+        document.body.appendChild(container);
+        openPopup(uniqueId);
+    }
+
+
+
+
+    function updateLyrics(lyricsHTML) {
+            document.getElementById("lyrics2").innerHTML = lyricsHTML;
+        }
+
+        function controlMusic(action) {
+            fetch(`/control`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ action })
+            });
+        }
+    
+
+
+        
+
+
+
+
+
+</script>
+</head>
+<body>
+<div id="aa">
+<h1 id="song-title">The Weeknd - The Hills</h1>
+<h1>Song Lyrics</h1>
+<div id="lyrics-container"><div class="Lyrics-sc-1bcc94c6-1 bzTABU" data-lyrics-container="true">[Intro]<br/>Yeah<br/>Yeah<br/>Yeah<br/><br/>[Verse 1]<br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/6606430/The-weeknd-the-hills/Your-man-on-the-road-he-doin-promo-you-said-keep-our-business-on-the-low-low"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">Your man on the road, he doin' promo<br/>You said, "Keep our business on the low-low"</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/6607083/The-weeknd-the-hills/Im-just-tryna-get-you-out-the-friend-zone-cause-you-look-even-better-than-the-photos"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">I'm just tryna get you out the friend zone<br/>'Cause you look even better than the photos</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5088484/The-weeknd-the-hills/I-cant-find-your-house-send-me-the-info-drivin-through-the-gated-residential"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">I can't find your house, send me the info<br/>Drivin' through the gated residential</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5088855/The-weeknd-the-hills/Found-out-i-was-comin-sent-your-friends-home-keep-on-tryna-hide-it-but-your-friends-know"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">Found out I was comin', sent your friends home<br/>Keep on tryna hide it, but your friends know</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><br/>[Chorus]<br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5091554/The-weeknd-the-hills/I-only-call-you-when-its-half-past-five-the-only-time-that-ill-be-by-your-side-i-only-love-it-when-you-touch-me-not-feel-me-when-im-fucked-up-thats-the-real-me-when-im-fucked-up-thats-the-real-me-yeah-i-only-call-you-when-its-half-past-five-the-only-time-id-ever-call-you-mine-i-only-love-it-when-you-touch-me-not-feel-me-when-im-fucked-up-thats-the-real-me-when-im-fucked-up-thats-the-real-me-babe"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">I only call you when it's half-past five<br/>The only time that I'll be by your side<br/>I only love it when you touch me, not feel me<br/>When I'm fucked up, that's the real me<br/>When I'm fucked up, that's the real me, yeah<br/>I only call you when it's half-past five<br/>The only time I'd ever call you mine<br/>I only love it when you touch me, not feel me<br/>When I'm fucked up, that's the real me<br/>When I'm fucked up, that's the real me, babe</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/></div><div class="Lyrics-sc-1bcc94c6-1 bzTABU" data-lyrics-container="true">[Verse 2]<br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5088486/The-weeknd-the-hills/Ima-let-you-know-and-keep-it-simple-tryna-keep-it-up-dont-seem-so-simple-i-just-fucked-two-bitches-fore-i-saw-you-and-you-gon-have-to-do-it-at-my-tempo"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">I'ma let you know and keep it simple<br/>Tryna keep it up don't seem so simple<br/>I just fucked two bitches 'fore I saw you<br/>And you gon' have to do it at my tempo</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5089995/The-weeknd-the-hills/Always-tryna-send-me-off-to-rehab-drugs-started-feelin-like-its-decaf"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">Always tryna send me off to rehab<br/>Drugs started feelin' like it's decaf</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5072568/The-weeknd-the-hills/Im-just-tryna-live-life-for-the-moment-and-all-these-motherfuckers-want-a-relapse"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">I'm just tryna live life for the moment<br/>And all these motherfuckers want a relapse</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><br/>[Chorus]<br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5091554/The-weeknd-the-hills/I-only-call-you-when-its-half-past-five-the-only-time-that-ill-be-by-your-side-i-only-love-it-when-you-touch-me-not-feel-me-when-im-fucked-up-thats-the-real-me-when-im-fucked-up-thats-the-real-me-yeah-i-only-call-you-when-its-half-past-five-the-only-time-id-ever-call-you-mine-i-only-love-it-when-you-touch-me-not-feel-me-when-im-fucked-up-thats-the-real-me-when-im-fucked-up-thats-the-real-me-babe"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">I only call you when it's half-past five<br/>The only time that I'll be by your side<br/>I only love it when you touch me, not feel me<br/>When I'm fucked up, that's the real me<br/>When I'm fucked up, that's the real me, yeah<br/>I only call you when it's half-past five<br/>The only time I'd ever call you mine<br/>I only love it when you touch me, not feel me<br/>When I'm fucked up, that's the real me<br/>When I'm fucked up, that's the real me, babe</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><br/>[Bridge]<br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/6378456/The-weeknd-the-hills/Hills-have-eyes-the-hills-have-eyes-who-are-you-to-judge-who-are-you-to-judge-hide-your-lies-girl-hide-your-lies-hide-your-lies-oh-baby"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">Hills have eyes, the hills have eyes<br/>Who are you to judge? Who are you to judge?<br/>Hide your lies, girl, hide your lies (Hide your lies, oh, baby)</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5203239/The-weeknd-the-hills/Only-you-to-trust-only-you"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">Only you to trust, only you</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/></div><div class="Lyrics-sc-1bcc94c6-1 bzTABU" data-lyrics-container="true">[Chorus]<br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5091554/The-weeknd-the-hills/I-only-call-you-when-its-half-past-five-the-only-time-that-ill-be-by-your-side-i-only-love-it-when-you-touch-me-not-feel-me-when-im-fucked-up-thats-the-real-me-when-im-fucked-up-thats-the-real-me-yeah-i-only-call-you-when-its-half-past-five-the-only-time-id-ever-call-you-mine-i-only-love-it-when-you-touch-me-not-feel-me-when-im-fucked-up-thats-the-real-me-when-im-fucked-up-thats-the-real-me-babe"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">I only call you when it's half-past five<br/>The only time that I'll be by your side<br/>I only love it when you touch me, not feel me<br/>When I'm fucked up, that's the real me<br/>When I'm fucked up, that's the real me, yeah<br/>I only call you when it's half-past five<br/>The only time I'd ever call you mine<br/>I only love it when you touch me, not feel me<br/>When I'm fucked up, that's the real me<br/>When I'm fucked up, that's the real me, babe</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span><br/><br/>[Outro]<br/><a class="ReferentFragment-desktop-sc-9284e47d-0 dTddhy" href="/5204176/The-weeknd-the-hills/Ewedihalehu-yene-konjo-ewedihalehu-yene-fikir-fikir-fikir-fikir-yene-fikir-fikir-fikir-fikir-ewedihalehu-yene-konjo-ewedihalehu"><span class="ReferentFragment-desktop-sc-9284e47d-1 gJkvwX">Ewedihalehu<br/>Yene konjo, ewedihalehu<br/>Yene fikir, fikir, fikir, fikir<br/>Yene fikir, fikir, fikir, fikir<br/>Ewedihalehu<br/>Yene konjo, ewedihalehu...</span></a><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span><span style="position:absolute;opacity:0;width:0;height:0;pointer-events:none;z-index:-1" tabindex="0"></span></span></div></div>
+<div id="translate" onclick="addPopup()" style="cursor: pointer; color: blue; text-decoration: underline;">Titel: The Weeknd - The Hills
+
+[Intro] yeahyeahyeah [Vers 1] Ihr Mann unterwegs, er hat Promoyou sagte: "HaltenIch kann dein Haus nicht finden, schick mir das Infodrivin durch das geschlossene ResidentialFound, das ich komme, und schickte deinen Freunden Homekeep auf Tryna aus, aber deine Freunde wissen [Chor] Ich rufe dich nur an, wenn es nur halb-paste ist, nur noch ZeitDass ich an deiner Seite sein werde, liebe es nur, wenn du mich berührst, nicht wie ich mich fühle, wenn ich beschissen bin, das ist das echte Me, wenn ich beschissen bin, das ist das wahre Ich, ja, ruf dich nur an, wenn es halb-paste fivethe istNur wenn ich dich jemals Minei nennen würde, liebe es es nur, wenn du mich berührst, nicht wie ich, wenn ich beschissen bin, das ist das wahre Me, wenn ich beschissen bin, das ist das wahre Ich, Baby, Baby, Baby
+[Vers 2] Ich bina lass dich wissen und haltet es simpetryna mach weiter so scheint es nicht so einfach zu sein, nur zwei Hündinnen von vorne zu sehen. Ich habe dich gesehen, und du musst es auf meinen Tempoalways machen, die mich zu Rehabdrugs schickte, anfing das Gefühl"Als ob es Decafi ist, nur um das Leben des Lebens für den Moment und all diese Motherfucker wollen einen Rückfall [Chor] Ich rufe dich nur an, wenn es halb-paste ist, nur die Zeit, dass ich es nur an deiner Seite sein werde, liebe es nur, wenn du mich berührst.Ich fühle mich nicht, wenn ich beschissen bin, das ist das wahre Me, wenn ich beschissen bin, das ist das wahre Ich, ja, nenn dich nur, wenn es halb Paste ist, nur Mal, dass ich dich jemals Minei nennen würde, liebe es nur, wenn du mich berührst, wenn du mich berührstIch fühle mich nicht, wenn ich beschissen bin, das ist das wahre Me, wenn ich beschissen bin, das ist das wahre Ich, Babe [Bridge] Hills haben Augen, die Hügel haben Augen.Wer bist du, um zu urteilen? Verstecke deine Lügen, Mädchen, verstecke deine Lügen (verstecke deine Lügen, oh, Baby) nur du vertraust, nur dir
+[Chor] Ich rufe dich nur an, wenn es nur halb Paste ist, wenn ich nur an deiner Seite sein werde, die es nur liebe, wenn du mich berührst, nicht mich fühle, wenn ich beschissen bin, das ist das echte Me, wenn ich beschissen bin.Das ist das wahre Ich, ja, ich ruf dich nur an, wenn es halb paste, wenn ich dich jemals Minei nennen würde, liebe es nur, wenn du mich berührst, nicht wie ich mich fühle, wenn ich beschissen bin, das ist das wahre Ich, wenn ich beschissen binDas ist das echte ich, Babe [Outro] Ewedihalehuyene Konjo, Ewedihalehuyene Fikir, Fikir, Fikir, Fikiryene Fikir, Fikir, Fikir, Fikirewedihalehuyene Konjo, Ewedihalehu ...</div>
+<div id="popup-overlay"></div>
+</div>
+<audio controls="">
+<source src="{song.mp3}" type="audio/mpeg"/>
+    Your browser does not support the audio element.
+</audio>
+<div class="button-container">
+<form action="/separation" method="POST">
+<button type="submit">separation</button>
+</form>
+<form action="/map" method="POST">
+<button type="submit">Origin</button>
+</form>
+<form action="/paraphrased" method="POST">
+<button type="submit">Grammar</button>
+</form>
+<form action="http://127.0.0.1:5002" method="GET">
+<button type="submit">Karaoke</button>
+</form>
+</div>
+</body>
+</html>
