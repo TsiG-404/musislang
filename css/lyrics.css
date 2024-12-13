@@ -1,0 +1,151 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    color: #333;
+    margin: 0;
+    padding: 0px;
+
+    
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #444;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+#aa{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#lyrics-container {
+    width:45vw;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 500px;
+}
+
+#lyrics-container p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+#translate {
+    width:45vw;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 500px;
+}
+
+#translate p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+button {
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #555;
+}
+
+button:active {
+    background: #222;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup textarea {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.popup .close-button {
+    text-align: right;
+}
+
+.popup .close-button button {
+    background: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.popup .close-button button:hover {
+    background: #c9302c;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+#translate {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+#translate:hover {
+    color: #0056b3;
+    text-decoration: none;
+}

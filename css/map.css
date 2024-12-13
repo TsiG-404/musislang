@@ -1,0 +1,98 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #f8f9fa, #e9ecef);
+    color: #333;
+    overflow: hidden; /* Ensures no scrolling issues with the map */
+}
+
+/* Heading Styles */
+h2 {
+    font-size: 2rem;
+    color: #444;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Artist Information Section */
+div {
+    margin: 20px auto;
+    padding: 15px 20px;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+strong {
+    color: #007bff;
+}
+
+/* Map Styles */
+#map_1882740be785d94eaffc198d09a934a2 {
+    position: absolute;
+    top: 300px; /* Adjusted for space below the artist info */
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Leaflet Map Enhancements */
+.leaflet-container {
+    font-size: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Popup Styling */
+.leaflet-popup-content {
+    font-size: 1rem;
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #333;
+}
+
+.leaflet-popup-tip {
+    background: #007bff;
+}
+
+.leaflet-popup-content-wrapper {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.leaflet-popup-close-button {
+    color: #007bff;
+    font-size: 1.2rem;
+}
+
+/* Button Enhancements (Optional for interaction elements) */
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+button:active {
+    background: #003d82;
+}
