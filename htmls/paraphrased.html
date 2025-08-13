@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<link href="/static/style.css" rel="stylesheet"/>
+<title>Paraphrased Text</title>
+<style>
+    body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    color: #333;
+    margin: 0;
+    padding: 0px;
+
+    
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #444;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+#aa{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#para2 {
+    width:45vw;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 500px;
+}
+
+#lyrics-container p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+#para {
+    width:45vw;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 500px;
+}
+
+#translate p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+button {
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #555;
+}
+
+button:active {
+    background: #222;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup textarea {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.popup .close-button {
+    text-align: right;
+}
+
+.popup .close-button button {
+    background: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.popup .close-button button:hover {
+    background: #c9302c;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+#translate {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+#translate:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+
+    
+    
+
+
+
+
+</style>
+</head>
+<body>
+<div class="button-container">
+<form action="/map" class="btn" method="POST">
+<button type="submit">Origin</button>
+</form>
+<form action="/lyrics3" class="btn" method="POST">
+<button type="submit">lyrics</button>
+</form>
+<form action="http://127.0.0.1:5002" class="btn" method="GET">
+<button type="submit">Karaoke</button>
+</form>
+</div>
+<div id="aa">
+<h1>Grammarlly</h1>
+<h1>Translated Grammarlly</h1>
+<div id="para"><p><strong>Original:</strong> at SXSW, the narrative of “The Hills” is a sinking sexual affair. Abel sets the<br/><strong>Suggestions:</strong><ul><li>At</li></ul></p><p><strong>Original:</strong> record straight about what this woman means to him, and…Read More[Intro]YeahYeahYeah[Verse 1]Your man on the<br/><strong>Suggestions:</strong><ul><li>Record</li></ul></p><p><strong>Original:</strong> record straight about what this woman means to him, and…Read More[Intro]YeahYeahYeah[Verse 1]Your man on the<br/><strong>Suggestions:</strong><ul><li> Read</li></ul></p><p><strong>Original:</strong> road, he doin' promoYou said, "Keep our business on the low-low"I'm just tryna get you<br/><strong>Suggestions:</strong><ul><li>Road</li></ul></p><p><strong>Original:</strong> road, he doin' promoYou said, "Keep our business on the low-low"I'm just tryna get you<br/><strong>Suggestions:</strong><ul><li>he's doin'</li><li>he is doin'</li><li>he was doin'</li></ul></p><p><strong>Original:</strong> road, he doin' promoYou said, "Keep our business on the low-low"I'm just tryna get you<br/><strong>Suggestions:</strong><ul><li>trying to</li></ul></p><p><strong>Original:</strong> out the friend zone'Cause you look even better than the photosI can't find your house,<br/><strong>Suggestions:</strong><ul><li>Out</li></ul></p><p><strong>Original:</strong> send me the infoDrivin' through the gated residentialFound out I was comin', sent your friends<br/><strong>Suggestions:</strong><ul><li>Send</li></ul></p><p><strong>Original:</strong> homeKeep on tryna hide it, but your friends know[Chorus]I only call you when it's half-past<br/><strong>Suggestions:</strong><ul><li>trying to</li></ul></p><p><strong>Original:</strong> me, not feel meWhen I'm fucked up, that's the real meWhen I'm fucked up, that's<br/><strong>Suggestions:</strong><ul><li>Me</li></ul></p><p><strong>Original:</strong> the real me, yeahI only call you when it's half-past fiveThe only time I'd ever<br/><strong>Suggestions:</strong><ul><li>The</li></ul></p><p><strong>Original:</strong> call you mineI only love it when you touch me, not feel meWhen I'm fucked<br/><strong>Suggestions:</strong><ul><li>Call</li></ul></p><p><strong>Original:</strong> up, that's the real meWhen I'm fucked up, that's the real me, babe<br/><strong>Suggestions:</strong><ul><li>Up</li></ul></p><p><strong>Original:</strong> [Verse 2]I'ma let you know and keep it simpleTryna keep it up don't seem so<br/><strong>Suggestions:</strong><ul><li>I'm going to</li><li>I will</li></ul></p><p><strong>Original:</strong> simpleI just fucked two bitches 'fore I saw youAnd you gon' have to do it<br/><strong>Suggestions:</strong><ul><li>SimpleI</li></ul></p><p><strong>Original:</strong> at my tempoAlways tryna send me off to rehabDrugs started feelin' like it's decafI'm just<br/><strong>Suggestions:</strong><ul><li>At</li></ul></p><p><strong>Original:</strong> at my tempoAlways tryna send me off to rehabDrugs started feelin' like it's decafI'm just<br/><strong>Suggestions:</strong><ul><li>trying to</li></ul></p><p><strong>Original:</strong> tryna live life for the momentAnd all these motherfuckers want a relapse[Chorus]I only call you<br/><strong>Suggestions:</strong><ul><li>Tryna</li></ul></p><p><strong>Original:</strong> when it's half-past fiveThe only time that I'll be by your sideI only love it<br/><strong>Suggestions:</strong><ul><li>When</li></ul></p><p><strong>Original:</strong> when you touch me, not feel meWhen I'm fucked up, that's the real meWhen I'm<br/><strong>Suggestions:</strong><ul><li>When</li></ul></p><p><strong>Original:</strong> fucked up, that's the real me, yeahI only call you when it's half-past fiveThe only<br/><strong>Suggestions:</strong><ul><li>Fucked</li></ul></p><p><strong>Original:</strong> time I'd ever call you mineI only love it when you touch me, not feel<br/><strong>Suggestions:</strong><ul><li>Time</li></ul></p><p><strong>Original:</strong> babe[Bridge]Hills have eyes, the hills have eyesWho are you to judge? Who are you to<br/><strong>Suggestions:</strong><ul><li>Babe</li></ul></p><p><strong>Original:</strong> judge?Hide your lies, girl, hide your lies (Hide your lies, oh, baby)Only you to trust,<br/><strong>Suggestions:</strong><ul><li>Judge</li></ul></p><p><strong>Original:</strong> judge?Hide your lies, girl, hide your lies (Hide your lies, oh, baby)Only you to trust,<br/><strong>Suggestions:</strong><ul><li> Hide</li></ul></p><p><strong>Original:</strong> judge?Hide your lies, girl, hide your lies (Hide your lies, oh, baby)Only you to trust,<br/><strong>Suggestions:</strong><ul><li>you're</li><li>you are</li><li>you were</li></ul></p><p><strong>Original:</strong> only you<br/><strong>Suggestions:</strong><ul><li>Only</li></ul></p><p><strong>Original:</strong> sideI only love it when you touch me, not feel meWhen I'm fucked up, that's<br/><strong>Suggestions:</strong><ul><li>SideI</li></ul></p><p><strong>Original:</strong> the real meWhen I'm fucked up, that's the real me, yeahI only call you when<br/><strong>Suggestions:</strong><ul><li>The</li></ul></p><p><strong>Original:</strong> it's half-past fiveThe only time I'd ever call you mineI only love it when you<br/><strong>Suggestions:</strong><ul><li>It</li></ul></p><p><strong>Original:</strong> touch me, not feel meWhen I'm fucked up, that's the real meWhen I'm fucked up,<br/><strong>Suggestions:</strong><ul><li>Touch</li></ul></p><p><strong>Original:</strong> that's the real me, babe[Outro]EwedihalehuYene konjo, ewedihalehuYene fikir, fikir, fikir, fikirYene fikir, fikir, fikir, fikirEwedihalehuYene<br/><strong>Suggestions:</strong><ul><li>That</li></ul></p><p><strong>Original:</strong> konjo, ewedihalehu...<br/><strong>Suggestions:</strong><ul><li>Konjo</li></ul></p></div>
+<div id="para2"><p><strong>Original:</strong> por primera vez en una actuación en vivo en SXSW, la "Hills" es una narración<br/><strong>Suggestions:</strong><ul><li>Por</li></ul></p><p><strong>Original:</strong> por primera vez en una actuación en vivo en SXSW, la "Hills" es una narración<br/><strong>Suggestions:</strong><ul><li>Hilos</li><li>Hilas</li><li>Halls</li><li>Hiles</li><li>Hilás</li></ul></p><p><strong>Original:</strong> sexual sincronizada.Abel deja el récord sobre lo que esta mujer significa para él, y ...<br/><strong>Suggestions:</strong><ul><li>Sexual</li></ul></p><p><strong>Original:</strong> sexual sincronizada.Abel deja el récord sobre lo que esta mujer significa para él, y ...<br/><strong>Suggestions:</strong><ul><li>. Abel</li></ul></p><p><strong>Original:</strong> lea más [introducción] yeahyeahyeah [versículo 1] Su hombre en la carretera, él, promoyou, dijo: "Mantenga<br/><strong>Suggestions:</strong><ul><li>Lea</li></ul></p><p><strong>Original:</strong> lea más [introducción] yeahyeahyeah [versículo 1] Su hombre en la carretera, él, promoyou, dijo: "Mantenga<br/><strong>Suggestions:</strong><ul><li>Yeah Yeah Yeahs</li></ul></p><p><strong>Original:</strong> lea más [introducción] yeahyeahyeah [versículo 1] Su hombre en la carretera, él, promoyou, dijo: "Mantenga<br/><strong>Suggestions:</strong><ul><li>promoción</li><li>promotor</li><li>promovió</li><li>promuevo</li></ul></p><p><strong>Original:</strong> nuestro negocio en la baja". Solo estoy tratando de sacarlo de la zona de amigos.Es,<br/><strong>Suggestions:</strong><ul><li>Nuestro</li></ul></p><p><strong>Original:</strong> nuestro negocio en la baja". Solo estoy tratando de sacarlo de la zona de amigos.Es,<br/><strong>Suggestions:</strong><ul><li>""</li><li></li></ul></p><p><strong>Original:</strong> nuestro negocio en la baja". Solo estoy tratando de sacarlo de la zona de amigos.Es,<br/><strong>Suggestions:</strong><ul><li>. Es</li></ul></p><p><strong>Original:</strong> pero tus amigos saben [Chorus], solo te llamo cuando sea la mitad de paso de<br/><strong>Suggestions:</strong><ul><li>Pero</li></ul></p><p><strong>Original:</strong> pero tus amigos saben [Chorus], solo te llamo cuando sea la mitad de paso de<br/><strong>Suggestions:</strong><ul><li>Choros</li><li>Horus</li><li>Choras</li><li>Choris</li><li>Churús</li></ul></p><p><strong>Original:</strong> que solo estaré de tu lado solo me encanta cuando me tocas, no me siento<br/><strong>Suggestions:</strong><ul><li>Que</li></ul></p><p><strong>Original:</strong> cuando estoy jodido, ese es el verdadero me cuando me jode, ese es el verdadero<br/><strong>Suggestions:</strong><ul><li>Cuando</li></ul></p><p><strong>Original:</strong> cuando estoy jodido, ese es el verdadero me cuando me jode, ese es el verdadero<br/><strong>Suggestions:</strong><ul><li>me cando</li><li>me cundo</li><li>me candó</li></ul></p><p><strong>Original:</strong> yo, sí solo que solo te llamas, es la vez que solo me encanta, me<br/><strong>Suggestions:</strong><ul><li>Yo</li></ul></p><p><strong>Original:</strong> yo, sí solo que solo te llamas, es la vez que solo me encanta, me<br/><strong>Suggestions:</strong><ul><li>sí,</li></ul></p><p><strong>Original:</strong> encanta, solo me encanta, solo me siento, no me toqué. ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡enEstoy jodido, ese es el<br/><strong>Suggestions:</strong><ul><li>Encanta</li></ul></p><p><strong>Original:</strong> encanta, solo me encanta, solo me siento, no me toqué. ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡enEstoy jodido, ese es el<br/><strong>Suggestions:</strong><ul><li>en Estoy</li></ul></p><p><strong>Original:</strong> encanta, solo me encanta, solo me siento, no me toqué. ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡enEstoy jodido, ese es el<br/><strong>Suggestions:</strong><ul><li>el!</li></ul></p><p><strong>Original:</strong> verdadero yo, nena<br/><strong>Suggestions:</strong><ul><li>Verdadero</li></ul></p><p><strong>Original:</strong> [Versículo 2] Te haré saber y lo mantengo simpletryna, manténgalo así, no parezcas tan simples<br/><strong>Suggestions:</strong><ul><li>cicletrina</li></ul></p><p><strong>Original:</strong> que solo follé a dos perras 'antes que te vi y tienes que hacerlo en<br/><strong>Suggestions:</strong><ul><li>Que</li></ul></p><p><strong>Original:</strong> mi tempoalways, intentando enviarme a rehabdrugs comenzó a sentir como si fuera descafiilEstaré por tu<br/><strong>Suggestions:</strong><ul><li>Mi</li></ul></p><p><strong>Original:</strong> mi tempoalways, intentando enviarme a rehabdrugs comenzó a sentir como si fuera descafiilEstaré por tu<br/><strong>Suggestions:</strong><ul><li>empaliáis</li><li>empalmáis</li><li>empaláis</li><li>empolláis</li><li>empolváis</li><li>tempanáis</li><li>templabais</li><li>templalas</li><li>templarais</li><li>templaríais</li><li>templáis</li><li>temporalizáis</li><li>temporizáis</li><li>témplalas</li></ul></p><p><strong>Original:</strong> mi tempoalways, intentando enviarme a rehabdrugs comenzó a sentir como si fuera descafiilEstaré por tu<br/><strong>Suggestions:</strong><ul><li>tú</li></ul></p><p><strong>Original:</strong> lado, solo me encanta cuando me toques, no me sientas cuando estoy jodido, ese es<br/><strong>Suggestions:</strong><ul><li>Lado</li></ul></p><p><strong>Original:</strong> el verdadero me cuando estoy jodido, ese es el verdadero yo, sí, sí, solo te<br/><strong>Suggestions:</strong><ul><li>El</li></ul></p><p><strong>Original:</strong> el verdadero me cuando estoy jodido, ese es el verdadero yo, sí, sí, solo te<br/><strong>Suggestions:</strong><ul><li>me cando</li><li>me cundo</li><li>me candó</li></ul></p><p><strong>Original:</strong> llamas cuando es el tiempo que solo me llama la vez que me llaman, por<br/><strong>Suggestions:</strong><ul><li>Llamas</li></ul></p><p><strong>Original:</strong> el que me tocas las colinas].tu juzga?¿Quién eres para juzgar? Esconde tus mentiras, niña, esconde<br/><strong>Suggestions:</strong><ul><li>El</li></ul></p><p><strong>Original:</strong> el que me tocas las colinas].tu juzga?¿Quién eres para juzgar? Esconde tus mentiras, niña, esconde<br/><strong>Suggestions:</strong><ul><li>[]</li><li></li></ul></p><p><strong>Original:</strong> el que me tocas las colinas].tu juzga?¿Quién eres para juzgar? Esconde tus mentiras, niña, esconde<br/><strong>Suggestions:</strong><ul><li>tú</li></ul></p><p><strong>Original:</strong> el que me tocas las colinas].tu juzga?¿Quién eres para juzgar? Esconde tus mentiras, niña, esconde<br/><strong>Suggestions:</strong><ul><li>? ¿</li></ul></p><p><strong>Original:</strong> tus mentiras (esconde tus mentiras, oh, bebé) solo para confiar, solo tú<br/><strong>Suggestions:</strong><ul><li>Tus</li></ul></p><p><strong>Original:</strong> de tu lado solo me encanta cuando me tocas, no me siento cuando estoy jodido,<br/><strong>Suggestions:</strong><ul><li>De</li></ul></p><p><strong>Original:</strong> ese es el verdadero me cuando estoy jodido, ese es el verdadero yo, sí solo,<br/><strong>Suggestions:</strong><ul><li>Ese</li></ul></p><p><strong>Original:</strong> ese es el verdadero me cuando estoy jodido, ese es el verdadero yo, sí solo,<br/><strong>Suggestions:</strong><ul><li>me cando</li><li>me cundo</li><li>me candó</li></ul></p><p><strong>Original:</strong> solo te llamo cuando es el tiempo que solo me llamo, solo me encanta cuando<br/><strong>Suggestions:</strong><ul><li>Solo</li></ul></p><p><strong>Original:</strong> me toques, no me siento, no me siento, no me llamo, lo que me hace<br/><strong>Suggestions:</strong><ul><li>Me</li></ul></p><p><strong>Original:</strong> me toques, no me siento, no me siento, no me llamo, lo que me hace<br/><strong>Suggestions:</strong><ul><li>tocas</li></ul></p><p><strong>Original:</strong> joder, lo que es jodido, eso es lo que es jodido, lo que es jodido,<br/><strong>Suggestions:</strong><ul><li>Joder</li></ul></p><p><strong>Original:</strong> lo que me hace joder, lo que me hace joder, lo que me hace joder,<br/><strong>Suggestions:</strong><ul><li>Lo</li></ul></p><p><strong>Original:</strong> lo que me hace joder, lo que es jodido.Ese es el verdadero yo, nena [outro]<br/><strong>Suggestions:</strong><ul><li>Lo</li></ul></p><p><strong>Original:</strong> lo que me hace joder, lo que es jodido.Ese es el verdadero yo, nena [outro]<br/><strong>Suggestions:</strong><ul><li>. Ese</li></ul></p><p><strong>Original:</strong> lo que me hace joder, lo que es jodido.Ese es el verdadero yo, nena [outro]<br/><strong>Suggestions:</strong><ul><li>otro</li><li>ostro</li><li>Cutro</li><li>nutro</li><li>out ro</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>hongo</li><li>pongo</li><li>congo</li><li>bongo</li><li>tongo</li><li>mongo</li><li>Congo</li><li>bongó</li><li>gongo</li><li>longo</li><li>ñongo</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>faquir</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>faquir</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>faquir</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>adquiriese</li><li>requiriese</li><li>adquiriente</li><li>adquiriere</li><li>requiriere</li><li>difiriere</li><li>difiriese</li><li>digiriere</li><li>digiriese</li><li>fifiriche</li><li>inquiriere</li><li>inquiriese</li><li>requiriente</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>faquir</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>faquir</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>faquir</li></ul></p><p><strong>Original:</strong> ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...<br/><strong>Suggestions:</strong><ul><li>hongo</li><li>pongo</li><li>congo</li><li>bongo</li><li>tongo</li><li>mongo</li><li>Congo</li><li>bongó</li><li>gongo</li><li>longo</li><li>ñongo</li></ul></p></div>
+</div>
+</body>
+</html>

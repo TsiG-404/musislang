@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Language Practice Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css">
+  
+  
+  
+  <style>
+
+    /*
+    body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto;
+      background: linear-gradient(120deg, #f6d365, #fda085);
+    color: #333; } 
+    h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #444;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+ */
+    
+    #chatbox { border: 1px solid #ccc; padding: 10px; height: 300px;background: #fff;border-radius: 5px; overflow-y: auto; margin-bottom: 10px; }
+    .user { text-align: right; color: blue; }
+    .bot { text-align: left; color: green; }
+    button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+  </style>
+  
+</head>
+<body>
+
+  <div class="button-container">
+    <form action="/paraphrased" method="POST" class="btn">
+        <button type="submit">grammar</button>
+    </form>
+    <form action="/map" method="POST" class="btn">
+        <button type="submit">Origin</button>
+    </form>
+    <form action="/lyrics3" method="POST" class="btn">
+        <button type="submit">lyrics</button>
+    </form>
+    <form action="http://127.0.0.1:5002" method="GET" class="btn">
+        <button type="submit">Karaoke</button>
+    </form>
+</div>
+
+
+
+
+  <h1>Practice Chatbot</h1>
+  <label for="lang">Choose language:</label>
+  <select id="lang">
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+    <option value="fr">French</option>
+    <option value="de">German</option>
+    <option value="it">Italian</option>
+    <option value="el">Greek</option>
+    <option value="ja">Japanese</option>
+    <option value="ru">Russian</option>
+  </select>
+  <div id="chatbox"></div>
+  <input type="text" id="message" placeholder="Type your message..." style="width:100%">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    async function sendMessage() {
+      const msg = document.getElementById("message").value;
+      const lang = document.getElementById("lang").value;
+      if (!msg) return;
+
+      const chatbox = document.getElementById("chatbox");
+      chatbox.innerHTML += `<div class="user"><strong>You:</strong> ${msg}</div>`;
+
+      const res = await fetch("chatbot/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg, language: lang })
+      });
+      const data = await res.json();
+      chatbox.innerHTML += `<div class="bot"><strong>Bot:</strong> ${data.reply}</div>`;
+      document.getElementById("message").value = "";
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  </script>
+</body>
+</html>

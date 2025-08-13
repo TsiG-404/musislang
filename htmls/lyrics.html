@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Song Lyrics</title>
+<link href="/static/style.css" rel="stylesheet"/>
+<style>
+    body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    color: #333;
+    margin: 0;
+    padding: 0px;
+
+    
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #444;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+#aa{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#lyrics-container {
+    width:45vw;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 500px;
+}
+
+#lyrics-container p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+#translate {
+    width:45vw;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 500px;
+}
+
+#translate p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+button {
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #555;
+}
+
+button:active {
+    background: #222;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup textarea {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.popup .close-button {
+    text-align: right;
+}
+
+.popup .close-button button {
+    background: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.popup .close-button button:hover {
+    background: #c9302c;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+#translate {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+#translate:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+
+    
+    
+
+
+
+
+</style>
+<script>
+    function openPopup(id) {
+        document.getElementById('popup-overlay').style.display = 'block';
+        document.getElementById(id).style.display = 'block';
+    }
+
+    function closePopup(id) {
+        document.getElementById('popup-overlay').style.display = 'none';
+        document.getElementById(id).style.display = 'none';
+    }
+
+    function addPopup() {
+        const container = document.createElement('div');
+        const uniqueId = 'popup-' + Date.now();
+
+        container.className = 'popup';
+        container.id = uniqueId;
+        container.innerHTML = `
+            <h3>Grammar:</h3>
+            <textarea placeholder="enter correctlly grammar"></textarea>
+            <div class="close-button">
+                <button onclick="closePopup('${uniqueId}')">Close</button>
+            </div>
+        `;
+
+        document.body.appendChild(container);
+        openPopup(uniqueId);
+    }
+
+
+
+
+    function updateLyrics(lyricsHTML) {
+            document.getElementById("lyrics2").innerHTML = lyricsHTML;
+        }
+
+        function controlMusic(action) {
+            fetch(`/control`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ action })
+            });
+        }
+    
+
+
+        
+
+
+
+
+
+</script>
+</head>
+<body>
+<div class="button-container">
+<form action="/separation" class="btn" method="POST">
+<button type="submit">separation</button>
+</form>
+<form action="/map" class="btn" method="POST">
+<button type="submit">Origin</button>
+</form>
+<form action="/paraphrased" class="btn" method="POST">
+<button type="submit">Grammar</button>
+</form>
+<form action="/quiz" class="btn" method="GET">
+<button type="submit">Quiz</button>
+</form>
+<form action="/chatbot" class="btn" method="POST">
+<button type="submit">Chatbot</button>
+</form>
+<form action="http://127.0.0.1:5002/kara" class="btn" method="GET">
+<button type="submit">Karaoke</button>
+</form>
+</div>
+<div id="aa">
+<h1 id="song-title">The Weeknd - The Hills</h1>
+<h1>Song Lyrics</h1>
+<div id="lyrics-container">377 ContributorsTranslationsTürkçeEspañolРусский (Russian)PortuguêsFrançaisفارسیPolskiPortuguêsDeutschItalianoThe Hills LyricsOriginally nicknamed “Mood Music” and first teased in a live performance at SXSW, the narrative of “The Hills” is a sinking sexual affair. Abel sets the record straight about what this woman means to him, and…Read More[Intro]YeahYeahYeah[Verse 1]Your man on the road, he doin' promoYou said, "Keep our business on the low-low"I'm just tryna get you out the friend zone'Cause you look even better than the photosI can't find your house, send me the infoDrivin' through the gated residentialFound out I was comin', sent your friends homeKeep on tryna hide it, but your friends know[Chorus]I only call you when it's half-past fiveThe only time that I'll be by your sideI only love it when you touch me, not feel meWhen I'm fucked up, that's the real meWhen I'm fucked up, that's the real me, yeahI only call you when it's half-past fiveThe only time I'd ever call you mineI only love it when you touch me, not feel meWhen I'm fucked up, that's the real meWhen I'm fucked up, that's the real me, babe
+
+[Verse 2]I'ma let you know and keep it simpleTryna keep it up don't seem so simpleI just fucked two bitches 'fore I saw youAnd you gon' have to do it at my tempoAlways tryna send me off to rehabDrugs started feelin' like it's decafI'm just tryna live life for the momentAnd all these motherfuckers want a relapse[Chorus]I only call you when it's half-past fiveThe only time that I'll be by your sideI only love it when you touch me, not feel meWhen I'm fucked up, that's the real meWhen I'm fucked up, that's the real me, yeahI only call you when it's half-past fiveThe only time I'd ever call you mineI only love it when you touch me, not feel meWhen I'm fucked up, that's the real meWhen I'm fucked up, that's the real me, babe[Bridge]Hills have eyes, the hills have eyesWho are you to judge? Who are you to judge?Hide your lies, girl, hide your lies (Hide your lies, oh, baby)Only you to trust, only you
+
+[Chorus]I only call you when it's half-past fiveThe only time that I'll be by your sideI only love it when you touch me, not feel meWhen I'm fucked up, that's the real meWhen I'm fucked up, that's the real me, yeahI only call you when it's half-past fiveThe only time I'd ever call you mineI only love it when you touch me, not feel meWhen I'm fucked up, that's the real meWhen I'm fucked up, that's the real me, babe[Outro]EwedihalehuYene konjo, ewedihalehuYene fikir, fikir, fikir, fikirYene fikir, fikir, fikir, fikirEwedihalehuYene konjo, ewedihalehu...</div>
+<div id="translate" onclick="addPopup()" style="cursor: pointer; color: blue; text-decoration: underline;">Título: The Weeknd - The Hills
+
+377 ContributorTranslationStürkçeespañolure -ссий (ruso) Portuguêsfrançais فارسی Polskiportuguêsdeutschitalianothe Hills Lyrics Orientalmente apodada "Música de humor" y por primera vez en una actuación en vivo en SXSW, la "Hills" es una narración sexual sincronizada.Abel deja el récord sobre lo que esta mujer significa para él, y ... lea más [introducción] yeahyeahyeah [versículo 1] Su hombre en la carretera, él, promoyou, dijo: "Mantenga nuestro negocio en la baja". Solo estoy tratando de sacarlo de la zona de amigos.Es, pero tus amigos saben [Chorus], solo te llamo cuando sea la mitad de paso de que solo estaré de tu lado solo me encanta cuando me tocas, no me siento cuando estoy jodido, ese es el verdadero me cuando me jode, ese es el verdadero yo, sí solo que solo te llamas, es la vez que solo me encanta, me encanta, solo me encanta, solo me siento, no me toqué. ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡enEstoy jodido, ese es el verdadero yo, nena
+
+[Versículo 2] Te haré saber y lo mantengo simpletryna, manténgalo así, no parezcas tan simples que solo follé a dos perras 'antes que te vi y tienes que hacerlo en mi tempoalways, intentando enviarme a rehabdrugs comenzó a sentir como si fuera descafiilEstaré por tu lado, solo me encanta cuando me toques, no me sientas cuando estoy jodido, ese es el verdadero me cuando estoy jodido, ese es el verdadero yo, sí, sí, solo te llamas cuando es el tiempo que solo me llama la vez que me llaman, por el que me tocas las colinas].tu juzga?¿Quién eres para juzgar? Esconde tus mentiras, niña, esconde tus mentiras (esconde tus mentiras, oh, bebé) solo para confiar, solo tú
+
+[Coro] Solo te llamo cuando sea la mitad de paso de solo hora que estaré de tu lado solo me encanta cuando me tocas, no me siento cuando estoy jodido, ese es el verdadero me cuando estoy jodido, ese es el verdadero yo, sí solo, solo te llamo cuando es el tiempo que solo me llamo, solo me encanta cuando me toques, no me siento, no me siento, no me llamo, lo que me hace joder, lo que es jodido, eso es lo que es jodido, lo que es jodido, lo que me hace joder, lo que me hace joder, lo que me hace joder, lo que me hace joder, lo que es jodido.Ese es el verdadero yo, nena [outro] ewedihalehuyene konjo, ewedihalehuyene fikir, fikir, fikir, fikiryene fikir, fikir, fikir, fikirewedihalehuyene konjo, ewedihalehu ...</div>
+<div id="popup-overlay"></div>
+</div>
+</body>
+</html>

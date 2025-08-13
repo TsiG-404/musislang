@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e52e9461bd6fab587648a34d3a0f969e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                
+    <style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* Toolbar (top buttons) */
+.toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+}
+
+.toolbar button {
+    background: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.toolbar button:hover {
+    background-color: #f2f2f2;
+    transform: scale(1.03);
+}
+
+/* Map Container Styling */
+#map {
+    width: 90%;
+    height: 80vh;
+    margin: 30px auto;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+}
+
+/* Artist Info Styling */
+#info-container {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+    </style>
+    
+            
+</head>
+<body>
+    
+    
+    <link rel="stylesheet" href="{ url_for('static', filename='style.css') }">
+
+    
+
+
+    <div class="button-container">
+        <form action="/paraphrased" method="POST" class="btn">
+            <button type="submit">Grammar</button>
+        </form>
+        <form action="/lyrics3" method="POST" class="btn">
+            <button type="submit">Lyrics</button>
+        </form>
+        <form action="http://127.0.0.1:5002" method="GET" class="btn">
+            <button type="submit">Karaoke</button>
+        </form>
+    </div>
+    <div id="info-container">
+        <h2>Artist Information</h2>
+        <p>Abel Makkonen Tesfaye (Amharic: አቤል መኮንን ተስፋዬ; né Abel Tesfaye, born February 16, 1990), known professionally as the Weeknd, is a Canadian singer-songwriter, record producer, and actor.[2][3] He is best known for his light-lyric tenor vocal range and falsetto, as well as his signature alternative R&B sound. His accolades include four Grammy Awards, 20 Billboard Music Awards, 22 Juno Awards, six American Music Awards, three MTV Video Music Awards, and a Latin Grammy Award.</p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_e52e9461bd6fab587648a34d3a0f969e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e52e9461bd6fab587648a34d3a0f969e = L.map(
+                "map_e52e9461bd6fab587648a34d3a0f969e",
+                {
+                    center: [61.0666922, -107.991707],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 3,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2017639b3d21feacfb395b185064dc26 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_2017639b3d21feacfb395b185064dc26.addTo(map_e52e9461bd6fab587648a34d3a0f969e);
+        
+    
+            var marker_66faa0514999376331a53ae4fab2306a = L.marker(
+                [61.0666922, -107.991707],
+                {}
+            ).addTo(map_e52e9461bd6fab587648a34d3a0f969e);
+        
+    
+        var popup_45ee080070e5613d5fed24592902fc1e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9e27f12996a43fbf8416e64685e1b22e = $(`<div id="html_9e27f12996a43fbf8416e64685e1b22e" style="width: 100.0%; height: 100.0%;">Canada</div>`)[0];
+                popup_45ee080070e5613d5fed24592902fc1e.setContent(html_9e27f12996a43fbf8416e64685e1b22e);
+            
+        
+
+        marker_66faa0514999376331a53ae4fab2306a.bindPopup(popup_45ee080070e5613d5fed24592902fc1e)
+        ;
+
+        
+    
+</script>
+</html>

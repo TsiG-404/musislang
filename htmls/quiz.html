@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/style.css"> 
+    <style>
+    form {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%; /* Remove limit */
+    box-sizing: border-box; /* Ensure padding doesn't overflow width */
+}
+
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+</head>
+<body>
+    <div class="button-container">
+        <form action="/map" class="btn" method="POST">
+        <button type="submit">Origin</button>
+        </form>
+        <form action="/lyrics3" class="btn" method="POST">
+        <button type="submit">lyrics</button>
+        </form>
+        <form action="http://127.0.0.1:5002" class="btn" method="GET">
+        <button type="submit">Karaoke</button>
+        </form>
+        </div>
+
+    <h1>Language Quiz</h1>
+
+    
+    {% if score is not none %}
+        <h2>Your Score: {{ score }} / {{ questions|length }}</h2>
+    {% endif %}
+
+    <form method="POST" action="/quiz">
+        <textarea name="quiz_data" hidden>{{ quiz_data | safe }}</textarea>
+
+        {% for q in questions %}
+            <div>
+                <p><strong>{{ q.text }}</strong></p>
+                {% for opt in q.options %}
+                    <label>
+                        <input type="radio" name="{{ q.id }}" value="{{ opt }}" required
+                        {% if score is not none and q.user == opt %} checked {% endif %}>
+                        {{ opt }}
+                    </label><br>
+                {% endfor %}
+
+                {% if score is not none %}
+                    <p>
+                        ✅ Correct Answer: {{ q.correct }} <br>
+                        🧑 Your Answer: {{ q.user }}
+                        {% if q.user == q.correct %}
+                            <span style="color:green;">(Correct)</span>
+                        {% else %}
+                            <span style="color:red;">(Wrong)</span>
+                        {% endif %}
+                    </p>
+                {% endif %}
+            </div>
+            <hr>
+        {% endfor %}
+
+        {% if score is none %}
+            <button type="submit">Submit Quiz</button>
+        {% endif %}
+    </form>
+</body>
+</html>
